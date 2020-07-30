@@ -1,0 +1,241 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+    list-style: none;
+  }
+  h1{
+      color:white;
+  }
+  h2{
+      color: white;
+  }
+  h3{
+      color: white;
+  }
+  ::placeholder{
+      color: white;
+  }
+
+body{
+    margin: 0em;
+    background-color: #1F1E2C;
+}
+
+p{color: white;}
+.block{
+    background: rgba(0,0,0,0.1);
+}
+
+
+.menu{
+    grid-area: menu;
+    background-color: #D350DA;
+}
+
+#menuItems{
+    color: white;
+}
+a{
+    color: white;
+}
+.search{
+    border: none;
+    background-color: none;
+    height: 1.5rem;
+}
+
+.main {
+    grid-area: main;
+}
+
+li {
+    padding: 0.5rem;
+    font-size: 20px;
+}
+i {
+    margin: 1rem;
+}
+
+
+/* Dashboard */
+.diary{
+    grid-area: diary;  
+}
+.diaryInput{
+    width: 100%;
+    height: 90%;
+    resize: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    border: none;
+
+    background: rgba(0,0,0,0);
+}
+
+button{
+    float: right;
+    width: 5rem;
+    height: 10%;
+    background: purple;
+    border: none;
+}
+.weather{
+    grid-area: weather;
+}
+.quote{
+    grid-area: quote;
+}
+.previous{
+    grid-area: previous;
+}
+
+.dashWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(200px, 250px) 1.5fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;;
+    
+
+    grid-template-areas:    'menu main weather ' 
+                            'menu diary quote'
+                            'menu previous previous' ;
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* all entries page */
+.allEntries{
+    grid-area: allEntries;
+    height: 90vh;
+}
+
+.allWrapper {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr ;
+    
+
+    grid-template-areas:    'menu main' 
+                            'menu allEntries' ;
+    grid-gap: 10px;
+    padding: 10px;
+}
+.block{
+    padding: 1.5rem;
+}
+
+.menuTitle{
+    font-size: 35px;
+    margin: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.graphWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr ;
+
+    grid-template-areas:    'menu main' 
+                            'menu graph';
+    grid-gap: 10px;
+    padding: 10px;
+}
+.contact{
+    grid-area: contact;
+    height: 90vh;
+}
+.contactWrapper{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr ;
+    
+
+    grid-template-areas:    'menu main' 
+                            'menu contact'
+                             ;
+    grid-gap: 10px;
+    background-color: white;
+    padding: 10px;
+}
+
+/* MOBILE BELOW THIS  */
+@media only screen and (max-width: 600px) {
+
+
+
+    .fa-bars{
+        float: right;
+        
+        height: 1.24em;
+    }
+
+.dashWrapper{
+
+    grid-template-areas: 'menu menu'
+                         'main main'
+                         'weather quote'
+                         'diary diary'
+                         'previous previous';
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+    grid-template-rows: 0.5fr 0.5fr 1fr 2fr 1fr; 
+}
+li {
+
+    justify-content: center;
+    text-align: center;  
+    
+}
+h2{
+    text-align: center;
+    
+}
+.menuTitle{
+    text-align: left;
+    font-size: 30px;
+}
+
+.menu {
+    position: relative;
+  }
+  
+#menuItems {
+    display: none;
+  } 
+  
+  .menu a {
+    color:black;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  .menu a.icon {
+    
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  
+  .menu a:hover {
+    background-color: lightsteelblue;
+    color: black;
+  }
+  
+
+}
+
