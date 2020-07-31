@@ -18,7 +18,7 @@
 <body>
     <div id="app">
         <!-- menu  -->
-        <div class="dashWrapper">
+        <div class="dash Wrapper">
             <div class="menu">
 
                 <h2 class="menuTitle">The Online Diary</h2>
@@ -43,8 +43,8 @@
 
             <!-- main block -->
             <div class="main block">
-                <h1 class="blockTitle">Hello {{ Name }},</h1>
-                <h3 class="blockTitle">Todays Date is {{displayDate()}}</h3>
+                <h1>Hello {{ Name }},</h1>
+                <h2>The Time is {{displayTime()}} and Todays Date is {{displayDate()}}</h2>
                 <!-- <input type="text" v-on:keyup.enter="logName" v-model="name" /> -->
             <!-- <span>{{ name }}</span> -->
             <!-- <label>Age:</label> -->
@@ -54,29 +54,27 @@
 
             <!-- diary block -->
             <div class="diary block">
-                
                 <textarea v-model="message" class="diaryInput" placeholder="How was your day?" contenteditable="false"></textarea>
-                <button v-on:click="submit()">Submit</button>
+                <button v-on:click="submit">Submit</button>
             </div>
 
             <!-- previous enteries block -->
             <div class="previous block">
-                <h3 class="blockTitle">Previous Entries</h3>
-                <ul class="previousEntriesContainer">
-                    <li class="entry" v-for="entry in entries">{{ entry.text }}</li>
-                </ul>
+                <h3>Previous Entries</h3>
+                <div class="previousEntriesContainer">
+                    <div v-for="entry in entries"><p class="previousEntry">{{ entry.text }}</p></div>
+                </div>
             </div>
 
             <!-- weather block -->
             <div class="weather block">
-                <h3 class="blockTitle">Weather</h3>
+                <h3>Weather</h3>
                 <p id="result">Loading Location...{{showPosition()}}</p>
-                
             </div>
 
             <!-- quote block -->
             <div class="quote block">
-                <h3 class="blockTitle">Quote of the day</h3>
+                <h3>Quote of the day</h3>
             </div>
         </div>
     </div>

@@ -2,11 +2,10 @@
 :root{
     --primaryTextColor: white;
     --backgroundColor: rgb(56, 42, 70);
+    --SecondaryColor: rgb(153, 50, 204,0.4);
 }
 
 /* reset browser default styles */
-
-
 *{
     box-sizing: border-box;
     padding: 0;
@@ -15,81 +14,86 @@
     text-decoration: none;
     list-style: none;
     /* transition: all 1s ease; */
-
+    
   }
+
+  /* my fonts */
 
   @font-face{
     font-family: 'Rubik Regular';
     src: url('Rubik-Regular.ttf');
-  }
-
-
-
-  /* my fonts */
-
-  
-  h1{
-      color: var(--primaryTextColor);
-  }
-  h2{
-      color: var(--primaryTextColor);
-  }
-  h3{
-      color: var(--primaryTextColor);
-  }
-  ::placeholder{
-      color: var(--primaryTextColor);
-  }
-  textarea {
     color: var(--primaryTextColor);
-}
+  }
+  h1{
+      font-size: 3em;
+      color: var(--primaryTextColor);
+  }
+  h2, h3, p, textarea, a, #menuItems, ::placeholder{
+      color: var(--primaryTextColor);
     
+  }
+
 body{
     overflow-x: hidden;
-
+    overflow-y: hidden;
     background-color: var(--backgroundColor);
 }
-
-p{
-    color: white;
-}
 .block{
+    padding: 1.5rem;
+    border-radius: 15px;
     background: rgba(0,0,0,0.1);
+    transition: all 1s ease; 
+}
+button{
+    float: right;
+    width: 5rem;
+    height: 2rem;
+    color: var(--primaryTextColor);
+    background: purple;
+    border: none;
+    position: relative;
+    bottom: 16px;
+    right: 0px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+button:hover{
+    background-color: var(--SecondaryColor);
+}
+button:active{
+    background-color: darkgoldenrod;
 }
 
-
+/* ////////////////////////// Navigation Menu Styling ////////////////////*/
 .menu{
     border-radius: 15px 50px 30px 10px;
     grid-area: menu;
-    background-color: darkorchid;
+    background-color: var(--SecondaryColor);
+    padding: 2rem;
 }
-
-#menuItems{
-    color: white;
+.menuTitle{
+    font-size: 35px;
+ 
 }
-a{
-    color: white;
+li {
+    padding-top: 2em;
+    font-size: 1.2rem;
+}
+i {
+    padding-right: 1em;
+    margin: 0rem;
 }
 .search{
     border: none;
-    background-color: none;
     width: 10rem;
-    height: 1.6rem;
+    height: 1.5rem;
     border-radius: 10px;
 }
-
-.main {
-    grid-area: main;
+/* Remove mobile hamburger icon*/
+.icon{
+    display: none;
 }
-
-li {
-    padding: 0.5rem;
-    font-size: 18px;
-}
-i {
-    margin: 1rem;
-}
-
+/* ////////////////////////////////////////////////////////////////////// */
 
 /* Dashboard */
 .diary{
@@ -99,24 +103,14 @@ i {
     width: 100%;
     height: 90%;
     resize: none;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
-    padding: 0.8rem;
     border: none;
-
     background: rgba(0,0,0,0);
 }
 
-button{
-    float: right;
-    width: 5rem;
-    height: 2rem;
-    background: purple;
-    border: none;
-    position: relative;
-    bottom: 16px;
-    right: 0px;
-    border-radius: 4px;
+/* for organising layout */
+.main {
+    grid-area: main;
 }
 .weather{
     grid-area: weather;
@@ -126,67 +120,62 @@ button{
 }
 .previous{
     grid-area: previous;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 
-}
-.entry{
-    padding: 30px;
-    color: white;
-}
 .previousEntriesContainer{
 display: flex;
 }
+.previousEntry{
 
-.dashWrapper {
+    font-size: 0.8em;
+    background-color: rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 15px;
+    height: 100px;
+    min-width: 100px;
+    max-width: 200px;
+    flex-basis: auto; /* default value */
+    word-wrap: break-word;
+}
+
+.Wrapper{
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-columns: minmax(200px, 250px) 1.5fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;;
-    
-
-    grid-template-areas:    'menu main weather ' 
-                            'menu diary quote'
-                            'menu previous previous' ;
     grid-gap: 10px;
+
     padding: 10px;
 }
 
-
-
+.dash {
+    grid-template-columns: minmax(200px, 250px) 1.5fr 1fr;
+    grid-template-rows: 1fr 2fr 1fr;;
+    
+    grid-template-areas:    'menu main weather ' 
+                            'menu diary quote'
+                            'menu previous previous' ;
+}
 /* ///////////////////////////////////////////////////////////////////////////////////////////////// */
 /* all entries page */
+
 .allEntries{
     grid-area: allEntries;
     height: 90vh;
 }
 
-.allWrapper {
-    width: 100vw;
-    height: 100vh;
-    display: grid;
+.all {
+
     grid-template-columns: 1fr 2.5fr ;
     
 
     grid-template-areas:    'menu main' 
                             'menu allEntries' ;
-    grid-gap: 10px;
-    padding: 10px;
-}
-.block{
-    padding: 1.5rem;
-    border-radius: 15px;
+
 }
 
-.menuTitle{
-    font-size: 35px;
-    margin: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: white;
-}
-
-    #menuItems {
-    display: block;
-  } 
 
 .graphWrapper{
     width: 100vw;
@@ -203,98 +192,69 @@ display: flex;
     grid-area: contact;
     height: 90vh;
 }
-.contactWrapper{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
+.contact{
     grid-template-columns: 1fr 2.5fr ;
-    
-
     grid-template-areas:    'menu main' 
                             'menu contact'
                              ;
-    grid-gap: 10px;
-    background-color: white;
-    padding: 10px;
 }
-
-.icon{
-    display: none;
-}
-
-/* MOBILE BELOW THIS  */
+/* ///////////////////////////////////////// MOBILE BELOW THIS ///////////////////////////////////////////////////////// */
 
 
 @media only screen and (max-width: 600px) {
 
-
-
+/* //////////////////////// Nav Menu */
+body{
+    overflow-y: scroll;
+}
     .fa-bars{
         float: right;
-        
         height: 1.24em;
+        color: white;
     }
-
-.dashWrapper{
-
+    .menuTitle{
+        text-align: left;
+        font-size: 30px;
+    }
+    li {
+        text-align: center;  
+    }
+    .menuTitle{
+        text-align: left;
+        font-size: 30px;
+    }
+    .menu {
+        position: relative;
+        border-radius: 15px 10px 25px 10px;
+      }
+      
+      .menu a {
+        color:white;
+        padding: 13px 13px;
+        
+        font-size: 1.4rem;
+        
+      }
+      .menu a.icon {
+        
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+      .menu a:hover {
+        background-color: rgba(7, 1, 1, 0.1);
+        border-radius: 35px;
+        
+      }
+    .dash {
     grid-template-areas: 'menu menu'
                          'main main'
                          'weather quote'
                          'diary diary'
                          'previous previous';
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
     grid-template-rows: 0.5fr 0.5fr 1fr 2fr 1fr; 
 }
-li {
-
-    justify-content: center;
-    text-align: center;  
-    
-}
-h2{
-    text-align: center;
-    
-}
-
-.icon{
-    display: block;
-}
-
-.menuTitle{
-    text-align: left;
-    font-size: 30px;
-}
-
-.menu {
-    position: relative;
-  }
-  
-#menuItems {
-    display: none;
-  } 
-  
-  .menu a {
-    color:black;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-    display: block;
-  }
-  
-  .menu a.icon {
-    
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  
-  .menu a:hover {
-    background-color: lightsteelblue;
-    color: black;
-  }
-  
-
 }
 

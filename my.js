@@ -3,9 +3,10 @@ var app = new Vue(
         el: "#app",
         data: 
         {
+            time: null,
             // name shown on dashboard
             Name: "Ben",
-            message: "helloVue",
+            message: "",
             entries: [
                 { text: 'best day eveeevvrrryyy' },
                 { text: 'baddaY' },
@@ -18,6 +19,12 @@ var app = new Vue(
                      
                 var newEntry = { text: app.message};
                 app.entries.unshift(newEntry)      ;  
+            },
+            displayTime: function(){
+            
+                var n = new Date().toLocaleTimeString();
+                time = n;
+                return time;
             },
 
             displayDate: function () {
