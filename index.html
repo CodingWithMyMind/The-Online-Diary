@@ -7,8 +7,8 @@
     <!-- responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- my style sheet -->
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <!-- vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <!-- icons -->
@@ -54,15 +54,16 @@
 
             <!-- diary block -->
             <div class="diary block">
-                <textarea class="diaryInput" placeholder="How was your day?" contenteditable="false"></textarea>
-                <button>Submit</button>
+                
+                <textarea v-model="message" class="diaryInput" placeholder="How was your day?" contenteditable="false"></textarea>
+                <button v-on:click="submit()">Submit</button>
             </div>
 
             <!-- previous enteries block -->
             <div class="previous block">
                 <h3 class="blockTitle">Previous Entries</h3>
-                <ul>
-                    <li v-for="entry in entries"> . {{ entry.text }}</li>
+                <ul class="previousEntriesContainer">
+                    <li class="entry" v-for="entry in entries">{{ entry.text }}</li>
                 </ul>
             </div>
 
@@ -70,7 +71,7 @@
             <div class="weather block">
                 <h3 class="blockTitle">Weather</h3>
                 <p id="result">Loading Location...{{showPosition()}}</p>
-                hello kelly
+                
             </div>
 
             <!-- quote block -->
@@ -80,7 +81,7 @@
         </div>
     </div>
     <!-- my js file -->
-    <script src="/my.js"></script>
+    <script src="my.js"></script>
 </body>
 
 </html>
