@@ -57,7 +57,6 @@ var app = new Vue({
         },
 
         showMenu: function () {
-            console.log("hello");
             {
                 var x;
                 x = window.getComputedStyle(document.querySelector('#menuItems')).display;
