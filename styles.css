@@ -17,58 +17,52 @@
   /* transition: all 1s ease; */
 }
 
-
 /* my fonts */
-
 @font-face {
   font-family: "Rubik Regular";
   src: url("Rubik-Regular.ttf");
-  color: var(--primaryTextColor);
 }
+/* responsive font sizing */
 h1 {
   font-size: minmax(1em, 3em);
-
-  color: var(--primaryTextColor);
 }
 h2 {
-    
   font-size: min(max(16px, 4vw), 22px);
 }
-h2,
-h3,
-p,
+/* setting colors for fonts */
+body,
+button,
 textarea,
 a,
 #menuItems,
 ::placeholder {
   color: var(--primaryTextColor);
-
 }
-
-
+/* body styles */
 body {
   overflow-x: hidden;
   overflow-y: hidden;
   background-color: var(--backgroundColor);
 }
+/* each block corresponds to each rounded square in the ui */
 .block {
   padding: 1.5rem;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.1);
   transition: all 1s ease;
 }
+/* submit button */
 button {
   float: right;
   width: 5rem;
   height: 2rem;
-  color: var(--primaryTextColor);
+
   background: purple;
   border: none;
   position: relative;
-  bottom: 16px;
+  bottom: 0px;
   right: 0px;
   border-radius: 4px;
-  font-weight: bold;
 }
 button:hover {
   background-color: var(--SecondaryColor);
@@ -87,24 +81,21 @@ button:active {
 }
 .menuTitle {
   font-size: 35px;
-  
 }
 li {
   padding-top: 2rem;
-  font-size: 1.2rem;
 }
 i {
   padding-right: 1em;
-  margin: 0rem;
 }
 .search {
   border: none;
-  width: 10rem;
+  width: 8rem;
   height: 1.5rem;
   border-radius: 10px;
 }
-#menuItems{
-display: block;
+#menuItems {
+  display: block;
 }
 /* Remove mobile hamburger icon*/
 .icon {
@@ -114,9 +105,12 @@ display: block;
 /* ////////////////////////////////////////////////////////////////////// */
 
 /* Dashboard */
+
+/* diary block */
 .diary {
   grid-area: diary;
 }
+/* diary input text box */
 .diaryInput {
   width: 100%;
   height: 90%;
@@ -125,23 +119,23 @@ display: block;
   border: none;
   background: rgba(0, 0, 0, 0);
 }
-h2{
-    
-    position: relative;
-}
-/* for organising layout */
+
+/* welcome block */
 .main {
   grid-area: main;
-  
 }
-.mainTitle{
-    font-size: clamp(30px, 4vw, 80px);
-    margin-bottom: 0.6rem;
+/* responsive main title text */
+.mainTitle {
+  font-size: clamp(30px, 4vw, 80px);
+  margin-bottom: 0.6rem;
 }
+
+/* weather block */
 .weather {
   grid-area: weather;
 }
 
+/* quote block */
 .quote {
   grid-area: quote;
 }
@@ -150,24 +144,27 @@ h2{
   justify-content: center;
   align-items: center;
 }
+/* quote styling */
 .quoteText {
   font-family: "Courier New", Courier, monospace;
   color: grey;
   text-align: center;
   position: relative;
   margin: 1rem;
-
   font-size: clamp(16px, 4vw, 40px);
 }
+
+/* previous block */
 .previous {
   grid-area: previous;
   overflow-x: auto;
   overflow-y: hidden;
 }
-
+/* container for previous entries items */
 .previousEntriesContainer {
   display: flex;
 }
+/* specific previous diary entry */
 .previousEntry {
   font-size: 0.8em;
   background-color: rgba(0, 0, 0, 0.1);
@@ -179,17 +176,19 @@ h2{
   max-width: 200px;
   flex-basis: auto; /* default value */
   word-wrap: break-word;
+  text-overflow: ellipsis;
 }
 
+/* wraps wround the all trhe content */
 .Wrapper {
   width: 100vw;
   height: 100vh;
   display: grid;
   grid-gap: 10px;
-
   padding: 10px;
 }
 
+/* Organising the layout for desktop with the columns and rows */
 .dash {
   grid-template-columns: 1fr 3fr 1.5fr;
   grid-template-rows: 1fr 1fr 2fr 1.3fr;
@@ -203,6 +202,8 @@ h2{
 /* ///////////////////////////////////////////////////////////////////////////////////////////////// */
 /* all entries page */
 
+/* /////////////// work in progress */
+/* 
 .allEntries {
   grid-area: allEntries;
   height: 90vh;
@@ -237,68 +238,90 @@ h2{
   grid-template-areas:
     "menu main"
     "menu contact";
-}
+} */
 
-/* ///////////////////////////////////////// MOBILE BELOW THIS ///////////////////////////////////////////////////////// */
+/* ///////////////////////////////////////// TABLET BELOW THIS ///////////////////////////////////////////////////////// */
+/* media querie for Tablet */
 @media screen and (max-width: 850px) {
-    .dash {
-        grid-template-columns: 0.5fr 2fr 1fr ;
-        grid-template-rows: 1fr 1fr 2fr 1.3fr;
-      
-        grid-template-areas:
-        
-          " menu main weather "
-          "menu diary weather "
-          "menu diary quote"
-          "menu previous previous";
-      }
-      .icon {
-        display: block;
-      }
-      #menuItems{
-          
-        display: none;
-      }
-      .menu{
-          min-width: auto;
-      }
-      .menuTitle{
-          display: none;
-      }
+  /* setting new layout for tablets */
+  .dash {
+    grid-template-columns: 0.5fr 2fr 1fr;
+    grid-template-rows: 1fr 1fr 2fr 1.3fr;
+    grid-template-areas:
+      "menu main weather"
+      "menu diary weather"
+      "menu diary quote"
+      "menu previous previous";
+  }
+  /* showing icon on smaller devices */
+  .icon {
+    display: block;
+  }
+  /* hide the menu items */
+  #menuItems {
+    display: none;
+  }
+  /* let menu take up width */
+  .menu {
+    min-width: auto;
+  }
+  .menuTitle {
+    display: none;
+  }
 }
+/* //////////////////////////////////////////////////////////// MOBILE BELOW THIS ////////////////////////////////////// */
 @media only screen and (max-width: 600px) {
-  /* //////////////////////// Nav Menu */
+/* setting new layout for mobile */
+  .dash {
+    grid-template-areas:
+      "menu menu"
+      "main main"
+      "weather quote"
+      "diary diary"
+      "previous previous";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 0.5fr 1fr 300px 170px;
+  }
+
+
+  /* allow mobile to scroll */
   body {
     overflow-y: scroll;
   }
-  .block{
-      padding: 1em;
+  /* smaller padding for blocks */
+  .block {
+    padding: 1em;
   }
-  .icon{
-      margin-top: 20px;
+  /* hamburger menu positioning */
+  .icon {
+    margin-top: 20px;
   }
+
 
   .fa-bars {
     float: right;
     height: 1em;
     color: white;
   }
+
+  /* setting the title to take up less room on mobile */
   .menuTitle {
     margin: 0em;
     text-align: left;
     font-size: 25px;
     display: block;
   }
+  /* allign menu items */
   li {
     text-align: center;
   }
-
+  /* nav bar styling for mobile /////////////////////////// */
   .menu {
     position: relative;
     border-radius: 15px 10px 25px 10px;
     padding: 1em;
   }
-
+/* menulink */
   .menu a {
     color: white;
     padding: 1px 1px;
@@ -315,20 +338,10 @@ h2{
     background-color: rgba(7, 1, 1, 0.1);
     border-radius: 35px;
   }
-  .dash {
-    grid-template-areas:
-      "menu menu"
-      "main main"
-      "weather quote"
-      "diary diary"
-      "previous previous";
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.1fr 0.5fr 1fr 300px 170px;
-  }
-
 }
+
 @media screen and (min-width: 900px) {
-#menuItems{
+  #menuItems {
     display: block;
-    }
+  }
 }

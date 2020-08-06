@@ -4,10 +4,13 @@ var app = new Vue({
         time: null,
         // name shown on dashboard
         Name: "Ben",
+        // temporary store for current entry
         message: null,
+
+        // where saved entries go
         entries: [
             {
-                text: 'Had such a great day, cooked dinner and hung out with housemates'
+                text: 'Had such a great day, cooked dinner and hung out with housemates',
             }, {
                 text: 'Was very cold today so stayed inside, didnt do much'
             }, {
@@ -16,25 +19,30 @@ var app = new Vue({
         ]
     },
     methods: {
+        // submit diary text and add to front of array
         submit: function () {
             console.log("mybutton");
             if(app.message != null){
                 var newEntry = {
                 text: app.message
+                // todo imoplement saving time
                 };
                 app.entries.unshift(newEntry);
                 app.message = null;
             }
+            else{
+                alert("Please enter some text before submitting")
+            }
         },
+        // function that returns formatted time
         displayTime: function () {
-
             var n = new Date().toLocaleTimeString();
             time = n;
-                // jj
             return time;
         },
 
-        displayDate: function () { // Add formatted timestamp to home page
+        // function that returns formatted date
+        displayDate: function () { 
             var today = new Date();
             var dd = String(today.getDate()).padStart(2, '0');
             var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -56,11 +64,12 @@ var app = new Vue({
             }
         },
 
+        // function to show menu items by dynamicly adding styles
         showMenu: function () {
             {
-                var x;
-                x = window.getComputedStyle(document.querySelector('#menuItems')).display;
-                if (x === "block") {
+                var z;
+                z = window.getComputedStyle(document.querySelector('#menuItems')).display;
+                if (z === "block") {
                     document.getElementById("menuItems").style.display = "none";
                 } else {
                     document.getElementById("menuItems").style.display = "block";
