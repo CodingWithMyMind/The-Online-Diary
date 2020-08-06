@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-
 <head>
     <meta charset="utf-8">
-    <title>The Online Diary</title>
+    <title>The Online Diary 📔</title>
     <meta name="description" content="">
     <!-- responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,18 +15,18 @@
 </head>
 
 <body>
+    <!-- where vue is able to be used -->
     <div id="app">
-        <!-- menu  -->
+        <!-- Everything on Dashboard -->
         <div class="dash Wrapper">
+            <!-- menu  -->
             <div class="menu">
-
                 <h2 class="menuTitle">The Online Diary</h2>
-
-                
-                <a href="javascript:void(0);"  v-on:click="showMenu()"class="icon" onclick="myFunction()">
+                <!-- Hamburger menu button -->
+                <a href="javascript:void(0);" v-on:click="showMenu()" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-
+                <!-- items in menu nav -->
                 <div id="menuItems">
                     <li><i class="fas fa-search"></i><input class="search" type="text" placeholder="Search"></a></li>
                     <li><i class="fas fa-home"></i><a href="/index.html">Home</a></li>
@@ -35,26 +34,19 @@
                     <li><i class="fas fa-chart-line"></i><a href="/Graph.html">Graphs</a></li>
                     <li><i class="fas fa-address-book"></i><a href="/Contact.html">Contact</a></li>
                 </div>
-
-               
-
-                
             </div>
 
-            <!-- main block -->
+            <!-- main welcome block -->
             <div class="main block">
-                <h1>Hello {{ Name }},</h1>
-                <h2>The Time is {{displayTime()}} and Todays Date is {{displayDate()}}</h2>
-                <!-- <input type="text" v-on:keyup.enter="logName" v-model="name" /> -->
-            <!-- <span>{{ name }}</span> -->
-            <!-- <label>Age:</label> -->
-            <!-- <input type="text" v-on:keyup.alt.enter="logAge" v-model="age" /> -->
-            <!-- <span>{{ age }}</span> -->
+                <h1 class="mainTitle">Hello {{ Name }},</h1>
+                <h3>The Time is {{displayTime()}} and Todays Date is {{displayDate()}}</h3>
             </div>
 
             <!-- diary block -->
             <div class="diary block">
-                <textarea v-model="message" class="diaryInput" placeholder="How was your day?" contenteditable="false"></textarea>
+                <!-- diary text input -->
+                <textarea v-model="message" class="diaryInput" placeholder="How was your day?"
+                    contenteditable="false"></textarea>
                 <button v-on:click="submit">Submit</button>
             </div>
 
@@ -62,7 +54,10 @@
             <div class="previous block">
                 <h3>Previous Entries</h3>
                 <div class="previousEntriesContainer">
-                    <div v-for="entry in entries"><p class="previousEntry">{{ entry.text }}</p></div>
+                    <!-- will iterate through all entries in diary and render them -->
+                    <div v-for="entry in entries">
+                        <p class="previousEntry">{{ entry.text }}</p>
+                    </div>
                 </div>
             </div>
 
@@ -70,11 +65,15 @@
             <div class="weather block">
                 <h3>Weather</h3>
                 <p id="result">Loading Location...{{showPosition()}}</p>
+                <img src="partly_cloudy.png" alt="">
             </div>
 
             <!-- quote block -->
             <div class="quote block">
                 <h3>Quote of the day</h3>
+                <div class="quoteContainer">
+                    <p class="quoteText">"This Quote is very deep and meaningful"</p>
+                </div>
             </div>
         </div>
     </div>

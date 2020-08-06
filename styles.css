@@ -1,260 +1,336 @@
 /* Variables */
-:root{
-    --primaryTextColor: white;
-    --backgroundColor: rgb(56, 42, 70);
-    --SecondaryColor: rgb(153, 50, 204,0.4);
+:root {
+  --primaryTextColor: white;
+  --backgroundColor: rgb(56, 42, 70);
+  --SecondaryColor: rgb(153, 50, 204, 0.4);
 }
 
 /* reset browser default styles */
-*{
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    list-style: none;
-    /* transition: all 1s ease; */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  list-style: none;
+  font-weight: 100;
+  /* transition: all 1s ease; */
+}
+
+
+/* my fonts */
+
+@font-face {
+  font-family: "Rubik Regular";
+  src: url("Rubik-Regular.ttf");
+  color: var(--primaryTextColor);
+}
+h1 {
+  font-size: minmax(1em, 3em);
+
+  color: var(--primaryTextColor);
+}
+h2 {
     
-  }
+  font-size: min(max(16px, 4vw), 22px);
+}
+h2,
+h3,
+p,
+textarea,
+a,
+#menuItems,
+::placeholder {
+  color: var(--primaryTextColor);
 
-  /* my fonts */
+}
 
-  @font-face{
-    font-family: 'Rubik Regular';
-    src: url('Rubik-Regular.ttf');
-    color: var(--primaryTextColor);
-  }
-  h1{
-      font-size: 3em;
-      color: var(--primaryTextColor);
-  }
-  h2, h3, p, textarea, a, #menuItems, ::placeholder{
-      color: var(--primaryTextColor);
-    
-  }
 
-body{
-    overflow-x: hidden;
-    overflow-y: hidden;
-    background-color: var(--backgroundColor);
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+  background-color: var(--backgroundColor);
 }
-.block{
-    padding: 1.5rem;
-    border-radius: 15px;
-    background: rgba(0,0,0,0.1);
-    transition: all 1s ease; 
+.block {
+  padding: 1.5rem;
+  border-radius: 15px;
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 1s ease;
 }
-button{
-    float: right;
-    width: 5rem;
-    height: 2rem;
-    color: var(--primaryTextColor);
-    background: purple;
-    border: none;
-    position: relative;
-    bottom: 16px;
-    right: 0px;
-    border-radius: 4px;
-    font-weight: bold;
+button {
+  float: right;
+  width: 5rem;
+  height: 2rem;
+  color: var(--primaryTextColor);
+  background: purple;
+  border: none;
+  position: relative;
+  bottom: 16px;
+  right: 0px;
+  border-radius: 4px;
+  font-weight: bold;
 }
-button:hover{
-    background-color: var(--SecondaryColor);
+button:hover {
+  background-color: var(--SecondaryColor);
 }
-button:active{
-    background-color: darkgoldenrod;
+button:active {
+  background-color: darkgoldenrod;
 }
 
 /* ////////////////////////// Navigation Menu Styling ////////////////////*/
-.menu{
-    border-radius: 15px 50px 30px 10px;
-    grid-area: menu;
-    background-color: var(--SecondaryColor);
-    padding: 2rem;
+.menu {
+  border-radius: 15px 50px 30px 10px;
+  grid-area: menu;
+  background-color: var(--SecondaryColor);
+  padding: 2rem;
+  min-width: 240px;
 }
-.menuTitle{
-    font-size: 35px;
- 
+.menuTitle {
+  font-size: 35px;
+  
 }
 li {
-    padding-top: 2em;
-    font-size: 1.2rem;
+  padding-top: 2rem;
+  font-size: 1.2rem;
 }
 i {
-    padding-right: 1em;
-    margin: 0rem;
+  padding-right: 1em;
+  margin: 0rem;
 }
-.search{
-    border: none;
-    width: 10rem;
-    height: 1.5rem;
-    border-radius: 10px;
+.search {
+  border: none;
+  width: 10rem;
+  height: 1.5rem;
+  border-radius: 10px;
+}
+#menuItems{
+display: block;
 }
 /* Remove mobile hamburger icon*/
-.icon{
-    display: none;
+.icon {
+  display: none;
 }
+
 /* ////////////////////////////////////////////////////////////////////// */
 
 /* Dashboard */
-.diary{
-    grid-area: diary;  
+.diary {
+  grid-area: diary;
 }
-.diaryInput{
-    width: 100%;
-    height: 90%;
-    resize: none;
-    font-size: 1.2rem;
-    border: none;
-    background: rgba(0,0,0,0);
+.diaryInput {
+  width: 100%;
+  height: 90%;
+  resize: none;
+  font-size: 1.2rem;
+  border: none;
+  background: rgba(0, 0, 0, 0);
 }
-
+h2{
+    
+    position: relative;
+}
 /* for organising layout */
 .main {
-    grid-area: main;
+  grid-area: main;
+  
 }
-.weather{
-    grid-area: weather;
+.mainTitle{
+    font-size: clamp(30px, 4vw, 80px);
+    margin-bottom: 0.6rem;
 }
-.quote{
-    grid-area: quote;
-}
-.previous{
-    grid-area: previous;
-    overflow-x: auto;
-    overflow-y: hidden;
+.weather {
+  grid-area: weather;
 }
 
-.previousEntriesContainer{
-display: flex;
+.quote {
+  grid-area: quote;
 }
-.previousEntry{
+.quoteContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.quoteText {
+  font-family: "Courier New", Courier, monospace;
+  color: grey;
+  text-align: center;
+  position: relative;
+  margin: 1rem;
 
-    font-size: 0.8em;
-    background-color: rgba(0,0,0,0.1);
-    padding: 1rem;
-    margin: 0.5rem;
-    border-radius: 15px;
-    height: 100px;
-    min-width: 100px;
-    max-width: 200px;
-    flex-basis: auto; /* default value */
-    word-wrap: break-word;
+  font-size: clamp(16px, 4vw, 40px);
+}
+.previous {
+  grid-area: previous;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-.Wrapper{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-gap: 10px;
+.previousEntriesContainer {
+  display: flex;
+}
+.previousEntry {
+  font-size: 0.8em;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 15px;
+  height: 100px;
+  min-width: 100px;
+  max-width: 200px;
+  flex-basis: auto; /* default value */
+  word-wrap: break-word;
+}
 
-    padding: 10px;
+.Wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-gap: 10px;
+
+  padding: 10px;
 }
 
 .dash {
-    grid-template-columns: minmax(200px, 250px) 1.5fr 1fr;
-    grid-template-rows: 1fr 2fr 1fr;;
-    
-    grid-template-areas:    'menu main weather ' 
-                            'menu diary quote'
-                            'menu previous previous' ;
+  grid-template-columns: 1fr 3fr 1.5fr;
+  grid-template-rows: 1fr 1fr 2fr 1.3fr;
+
+  grid-template-areas:
+    "menu main weather "
+    "menu diary weather "
+    "menu diary quote"
+    "menu previous previous";
 }
 /* ///////////////////////////////////////////////////////////////////////////////////////////////// */
 /* all entries page */
 
-.allEntries{
-    grid-area: allEntries;
-    height: 90vh;
+.allEntries {
+  grid-area: allEntries;
+  height: 90vh;
 }
 
 .all {
+  grid-template-columns: 1fr 2.5fr;
 
-    grid-template-columns: 1fr 2.5fr ;
-    
-
-    grid-template-areas:    'menu main' 
-                            'menu allEntries' ;
-
+  grid-template-areas:
+    "menu main"
+    "menu allEntries";
 }
 
+.graphWrapper {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
 
-.graphWrapper{
-    width: 100vw;
-    height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 2.5fr ;
+  grid-template-areas:
+    "menu main"
+    "menu graph";
+  grid-gap: 10px;
+  padding: 10px;
+}
+.contact {
+  grid-area: contact;
+  height: 90vh;
+}
+.contact {
+  grid-template-columns: 1fr 2.5fr;
+  grid-template-areas:
+    "menu main"
+    "menu contact";
+}
 
-    grid-template-areas:    'menu main' 
-                            'menu graph';
-    grid-gap: 10px;
-    padding: 10px;
-}
-.contact{
-    grid-area: contact;
-    height: 90vh;
-}
-.contact{
-    grid-template-columns: 1fr 2.5fr ;
-    grid-template-areas:    'menu main' 
-                            'menu contact'
-                             ;
-}
 /* ///////////////////////////////////////// MOBILE BELOW THIS ///////////////////////////////////////////////////////// */
-
-
-@media only screen and (max-width: 600px) {
-
-/* //////////////////////// Nav Menu */
-body{
-    overflow-y: scroll;
-}
-    .fa-bars{
-        float: right;
-        height: 1.24em;
-        color: white;
-    }
-    .menuTitle{
-        text-align: left;
-        font-size: 30px;
-    }
-    li {
-        text-align: center;  
-    }
-    .menuTitle{
-        text-align: left;
-        font-size: 30px;
-    }
-    .menu {
-        position: relative;
-        border-radius: 15px 10px 25px 10px;
-      }
-      
-      .menu a {
-        color:white;
-        padding: 13px 13px;
-        
-        font-size: 1.4rem;
-        
-      }
-      .menu a.icon {
-        
-        display: block;
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      .menu a:hover {
-        background-color: rgba(7, 1, 1, 0.1);
-        border-radius: 35px;
-        
-      }
+@media screen and (max-width: 850px) {
     .dash {
-    grid-template-areas: 'menu menu'
-                         'main main'
-                         'weather quote'
-                         'diary diary'
-                         'previous previous';
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.5fr 0.5fr 1fr 2fr 1fr; 
+        grid-template-columns: 0.5fr 2fr 1fr ;
+        grid-template-rows: 1fr 1fr 2fr 1.3fr;
+      
+        grid-template-areas:
+        
+          " menu main weather "
+          "menu diary weather "
+          "menu diary quote"
+          "menu previous previous";
+      }
+      .icon {
+        display: block;
+      }
+      #menuItems{
+          
+        display: none;
+      }
+      .menu{
+          min-width: auto;
+      }
+      .menuTitle{
+          display: none;
+      }
 }
-}
+@media only screen and (max-width: 600px) {
+  /* //////////////////////// Nav Menu */
+  body {
+    overflow-y: scroll;
+  }
+  .block{
+      padding: 1em;
+  }
+  .icon{
+      margin-top: 20px;
+  }
 
+  .fa-bars {
+    float: right;
+    height: 1em;
+    color: white;
+  }
+  .menuTitle {
+    margin: 0em;
+    text-align: left;
+    font-size: 25px;
+    display: block;
+  }
+  li {
+    text-align: center;
+  }
+
+  .menu {
+    position: relative;
+    border-radius: 15px 10px 25px 10px;
+    padding: 1em;
+  }
+
+  .menu a {
+    color: white;
+    padding: 1px 1px;
+
+    font-size: 1.3rem;
+  }
+  .menu a.icon {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .menu a:hover {
+    background-color: rgba(7, 1, 1, 0.1);
+    border-radius: 35px;
+  }
+  .dash {
+    grid-template-areas:
+      "menu menu"
+      "main main"
+      "weather quote"
+      "diary diary"
+      "previous previous";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.1fr 0.5fr 1fr 300px 170px;
+  }
+
+}
+@media screen and (min-width: 900px) {
+
+
+#menuItems{
+    display: block;
+    }
+}
