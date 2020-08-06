@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
+    <!-- title in browser -->
     <title>The Online Diary 📔</title>
     <meta name="description" content="">
     <!-- responsive meta tag -->
@@ -23,7 +24,7 @@
             <div class="menu">
                 <!-- menu Title  -->
                 <h2 class="menuTitle">The Online Diary</h2>
-                <!-- Hamburger menu button -->
+                <!-- Hamburger menu button with javascript method showMenu() -->
                 <a href="javascript:void(0);" v-on:click="showMenu()" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -36,13 +37,11 @@
                     <li><i class="fas fa-address-book"></i><a href="/Contact.html">Contact</a></li>
                 </div>
             </div>
-
             <!-- main welcome block -->
             <div class="main block">
                 <h1 class="mainTitle">Hello {{ Name }},</h1>
                 <h3>The Time is {{displayTime()}} and Todays Date is {{displayDate()}}</h3>
             </div>
-
             <!-- diary block -->
             <div class="diary block">
                 <!-- diary text input -->
@@ -50,7 +49,6 @@
                     contenteditable="false"></textarea>
                 <button v-on:click="submit">Submit</button>
             </div>
-
             <!-- previous enteries block -->
             <div class="previous block">
                 <h3>Previous Entries</h3>
@@ -61,14 +59,12 @@
                     </div>
                 </div>
             </div>
-
             <!-- weather block -->
             <div class="weather block">
                 <h3>Weather</h3>
                 <p id="result">Loading Location...{{showPosition()}}</p>
                 <img src="partly_cloudy.png" alt="">
             </div>
-
             <!-- quote block -->
             <div class="quote block">
                 <h3>Quote of the day</h3>

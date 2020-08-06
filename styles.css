@@ -4,7 +4,6 @@
   --backgroundColor: rgb(56, 42, 70);
   --SecondaryColor: rgb(153, 50, 204, 0.4);
 }
-
 /* reset browser default styles */
 * {
   box-sizing: border-box;
@@ -151,7 +150,7 @@ i {
   text-align: center;
   position: relative;
   margin: 1rem;
-  font-size: clamp(16px, 4vw, 40px);
+  font-size: clamp(12px, 20px, 40px);
 }
 
 /* previous block */
@@ -159,6 +158,7 @@ i {
   grid-area: previous;
   overflow-x: auto;
   overflow-y: hidden;
+  min-height: 160px;
 }
 /* container for previous entries items */
 .previousEntriesContainer {
@@ -239,6 +239,14 @@ i {
     "menu main"
     "menu contact";
 } */
+
+
+/*  allow scroll on y axis if gets to small on desktop */
+@media screen and (max-height: 500px){
+  body {
+    overflow-y: scroll;
+  }
+}
 
 /* ///////////////////////////////////////// TABLET BELOW THIS ///////////////////////////////////////////////////////// */
 /* media querie for Tablet */
