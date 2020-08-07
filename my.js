@@ -1,3 +1,4 @@
+// initialising new vue app
 var app = new Vue({
     el: "#app",
     data: {
@@ -7,14 +8,19 @@ var app = new Vue({
         // temporary store for current entry
         message: null,
 
+        slider: 50,
+
         // where saved entries go
         entries: [
             {
                 text: 'Had such a great day, cooked dinner and hung out with housemates',
+                slider: 98
             }, {
-                text: 'Was very cold today so stayed inside, didnt do much'
+                text: 'Was very cold today so stayed inside, didnt do much',
+                slider: 24
             }, {
-                text: 'Work work work work work'
+                text: 'Work work work work work',
+                slider: 57
             }
         ]
     },
@@ -24,7 +30,8 @@ var app = new Vue({
             console.log("mybutton");
             if(app.message != null){
                 var newEntry = {
-                text: app.message
+                text: app.message,
+                slider: app.slider
                 // todo imoplement saving time
                 };
                 app.entries.unshift(newEntry);
@@ -40,7 +47,6 @@ var app = new Vue({
             time = n;
             return time;
         },
-
         // function that returns formatted date
         displayDate: function () { 
             var today = new Date();

@@ -47,7 +47,14 @@
                 <!-- diary text input -->
                 <textarea v-model="message" class="diaryInput" placeholder="How was your day?"
                     contenteditable="false"></textarea>
-                <button v-on:click="submit">Submit</button>
+                    <!-- diary emotional slider -->
+                    <div class="slidecontainer">
+                        <i class="fas fa-frown"></i>
+                        <input type="range" v-model="slider" min="1" max="100" value="50" class="slider" id="myRange">
+                        <i class="fas fa-smile"></i>
+                        <button v-on:click="submit">Submit</button>
+                      </div>
+                
             </div>
             <!-- previous enteries block -->
             <div class="previous block">
@@ -55,7 +62,7 @@
                 <div class="previousEntriesContainer">
                     <!-- will iterate through all entries in diary and render them -->
                     <div v-for="entry in entries">
-                        <p class="previousEntry">{{ entry.text }}</p>
+                        <p class="previousEntry">{{ entry.text }} <br> emotional score = {{entry.slider}}</p>
                     </div>
                 </div>
             </div>
