@@ -136,6 +136,7 @@ i {
 /* welcome block */
 .main {
   grid-area: main;
+  
 }
 /* responsive main title text */
 .mainTitle {
@@ -264,7 +265,7 @@ i {
 
 /* ///////////////////////////////////////// TABLET BELOW THIS ///////////////////////////////////////////////////////// */
 /* media querie for Tablet */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
   /* setting new layout for tablets */
   .dash {
     grid-template-columns: 0.5fr 2fr 1fr;
@@ -292,7 +293,7 @@ i {
   }
 }
 /* //////////////////////////////////////////////////////////// MOBILE BELOW THIS ////////////////////////////////////// */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 675px) {
 /* setting new layout for mobile */
   .dash {
     grid-template-areas:
