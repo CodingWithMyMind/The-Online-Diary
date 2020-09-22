@@ -5,6 +5,18 @@
   --SecondaryColor: rgb(153, 50, 204, 0.4);
 }
 /* reset browser default styles */
+
+
+.fade-enter-active, .fade-leave-active {
+  
+  transition: opacity 0.3s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  
+}
+
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -33,7 +45,6 @@ body,
 button,
 textarea,
 a,
-#menuItems,
 ::placeholder {
   color: var(--primaryTextColor);
 }
@@ -45,7 +56,7 @@ body {
 }
 /* each block corresponds to each rounded square in the ui */
 .block {
-  padding: 1.5rem;
+  padding: 1rem;
   border-radius: 15px;
   background: rgba(0, 0, 0, 0.1);
   transition: all 1s ease;
@@ -78,6 +89,8 @@ button:active {
   padding: 2rem;
   min-width: 240px;
 }
+
+
 .menuTitle {
   font-size: 35px;
 }
@@ -92,9 +105,6 @@ i {
   width: 8rem;
   height: 1.5rem;
   border-radius: 10px;
-}
-#menuItems {
-  display: block;
 }
 /* Remove mobile hamburger icon*/
 .icon {
@@ -117,6 +127,13 @@ i {
   font-size: 1.2rem;
   border: none;
   background: rgba(0, 0, 0, 0);
+}
+::placeholder {
+color: rgba(255, 255, 255, 0.8);
+}
+textarea:focus{
+  outline: none;
+
 }
 /* diary slider */
 .slidecontainer{
@@ -157,6 +174,7 @@ i {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 400px;
 }
 /* quote styling */
 .quoteText {
@@ -164,16 +182,21 @@ i {
   color: grey;
   text-align: center;
   position: relative;
-  margin: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+ 
   font-size: clamp(12px, 20px, 40px);
 }
 
 /* previous block */
 .previous {
+ 
   grid-area: previous;
   overflow-x: auto;
   overflow-y: hidden;
   min-height: 160px;
+  scrollbar-color:var(--SecondaryColor) transparent;
+  scrollbar-width: thin;
 }
 /* container for previous entries items */
 .previousEntriesContainer {
@@ -183,15 +206,19 @@ i {
 .previousEntry {
   font-size: 0.8em;
   background-color: rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  margin: 0.5rem;
+  padding: 0.7rem;
+  margin: 0.4rem;
   border-radius: 15px;
-  height: 100px;
-  min-width: 100px;
+  height: 100%;
+  min-width: 150px;
   max-width: 200px;
   flex-basis: auto; /* default value */
   word-wrap: break-word;
   text-overflow: ellipsis;
+  overflow: auto;
+
+  scrollbar-color:var(--SecondaryColor) transparent;
+  scrollbar-width: thin;
 }
 
 /* wraps wround the all trhe content */
@@ -281,9 +308,10 @@ i {
     display: block;
   }
   /* hide the menu items */
-  #menuItems {
+  .open{
     display: none;
   }
+
   /* let menu take up width */
   .menu {
     min-width: auto;
@@ -364,7 +392,7 @@ i {
 }
 
 @media screen and (min-width: 900px) {
-  #menuItems {
-    display: block;
-  }
+
 }
+
+

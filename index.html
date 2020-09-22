@@ -21,64 +21,48 @@
         <!-- Everything on Dashboard -->
         <div class="dash Wrapper">
             <!-- menu  -->
-            <div class="menu">
-                <!-- menu Title  -->
-                <h2 class="menuTitle">The Online Diary</h2>
-                <!-- Hamburger menu button with javascript method showMenu() -->
-                <a href="javascript:void(0);" v-on:click="showMenu()" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
-                <!-- items in menu nav -->
-                <div id="menuItems">
-                    <li><i class="fas fa-search"></i><input class="search" type="text" placeholder="Search"></a></li>
-                    <li><i class="fas fa-home"></i><a href="index.html">Home</a></li>
-                    <li><i class="fas fa-book-open"></i><a href="All.html">All Entries</a></li>
-                    <li><i class="fas fa-chart-line"></i><a href="Graph.html">Graphs</a></li>
-                    <li><i class="fas fa-address-book"></i><a href="Contact.html">Contact</a></li>
-                </div>
-            </div>
+           <nav-menu></nav-menu>
             <!-- main welcome block -->
-            <div class="main block">
-                <h1 class="mainTitle">Hello {{ Name }},</h1>
-                <h3>The Time is {{displayTime()}} and Todays Date is {{displayDate()}}</h3>
-            </div>
+            <main-welcome-block v-bind:name="Name"></main-welcome-block>
             <!-- diary block -->
-            <div class="diary block">
-                <!-- diary text input -->
-                <textarea v-model="message" class="diaryInput" placeholder="How was your day?"
-                    contenteditable="false"></textarea>
-                    <!-- diary emotional slider -->
-                    <div class="slidecontainer">
-                        <i class="fas fa-frown"></i>
-                        <input type="range" v-model="slider" min="1" max="100" value="50" class="slider" id="myRange">
-                        <i class="fas fa-smile"></i>
-                        <button v-on:click="submit">Submit</button>
-                      </div>
-                
+            <div  class="diary block">
+                <transition name="fade" mode="out-in">
+                    <div key="save" v-if="state==='edit'">  
+                        <!-- diary text input -->
+                        <textarea  autofocus  v-model="message" maxlength = "250" class="diaryInput" placeholder="How was your day?"
+                            contenteditable="false" @keyup.enter="submit"></textarea>
+                            <p>{{inputCharacterCount}}/250</p>
+                            <!-- diary emotional slider -->
+                            <div class="slidecontainer">
+                                <i class="fas fa-frown"></i>
+                                <input type="range" v-model="slider" min="1" max="100" value="50" class="slider" id="myRange">
+                                <i class="fas fa-smile"></i> 
+                                <!-- TODO make button look deactivated in css -->
+                                <button v-bind:disabled="message.length === 0" v-on:click="submit">Submit</button>
+                        </div>
+                    </div>
+                    <div key="save2" v-else >
+                        <h1>Thankyou - come back tomororw</h1>
+                        <button @click="changeState('edit')" >New Entry</button>
+                    </div>
+                </transition>
             </div>
+
+
             <!-- previous enteries block -->
             <div class="previous block">
                 <h3>Previous Entries</h3>
                 <div class="previousEntriesContainer">
                     <!-- will iterate through all entries in diary and render them -->
                     <div v-for="entry in entries">
-                        <p class="previousEntry">{{ entry.text }} <br> emotional score = {{entry.slider}}</p>
+                        <p class="previousEntry">{{ entry.text | capitalize }} <br> emotional score = {{entry.slider}}</p>
                     </div>
                 </div>
             </div>
             <!-- weather block -->
-            <div class="weather block">
-                <h3>Weather</h3>
-                <p id="result">Loading Location...{{showPosition()}}</p>
-                <img src="partly_cloudy.png" alt="">
-            </div>
+            <weather-block></weather-block>
             <!-- quote block -->
-            <div class="quote block">
-                <h3>Quote of the day</h3>
-                <div class="quoteContainer">
-                    <p class="quoteText">"This Quote is very deep and meaningful"</p>
-                </div>
-            </div>
+            <quote-block></quote-block>
         </div>
     </div>
     <!-- my js file -->
