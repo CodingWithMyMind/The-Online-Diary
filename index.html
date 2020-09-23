@@ -25,21 +25,26 @@
             <!-- main welcome block -->
             <main-welcome-block v-bind:name="Name"></main-welcome-block>
             <!-- diary block -->
+
+
+
             <div  class="diary block">
                 <transition name="fade" mode="out-in">
-                    <div key="save" v-if="state==='edit'">  
+                    <div key="save" v-if="state==='edit'" style="display: block;height: 95%;">  
                         <!-- diary text input -->
                         <textarea  autofocus  v-model="message" maxlength = "250" class="diaryInput" placeholder="How was your day?"
-                            contenteditable="false" @keyup.enter="submit"></textarea>
-                            <p>{{inputCharacterCount}}/250</p>
+                            contenteditable="false" @keyup.enter="submit">
+                            
+                        </textarea>
+                        <p>{{inputCharacterCount}}/250</p>
                             <!-- diary emotional slider -->
-                            <div class="slidecontainer">
+                            
                                 <i class="fas fa-frown"></i>
                                 <input type="range" v-model="slider" min="1" max="100" value="50" class="slider" id="myRange">
                                 <i class="fas fa-smile"></i> 
                                 <!-- TODO make button look deactivated in css -->
                                 <button v-bind:disabled="message.length === 0" v-on:click="submit">Submit</button>
-                        </div>
+                        
                     </div>
                     <div key="save2" v-else >
                         <h1>Thankyou - come back tomororw</h1>
@@ -50,15 +55,7 @@
 
 
             <!-- previous enteries block -->
-            <div class="previous block">
-                <h3>Previous Entries</h3>
-                <div class="previousEntriesContainer">
-                    <!-- will iterate through all entries in diary and render them -->
-                    <div v-for="entry in entries">
-                        <p class="previousEntry">{{ entry.text | capitalize }} <br> emotional score = {{entry.slider}}</p>
-                    </div>
-                </div>
-            </div>
+            <previous-entries-block></previous-entries-block>
             <!-- weather block -->
             <weather-block></weather-block>
             <!-- quote block -->

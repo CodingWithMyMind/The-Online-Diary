@@ -122,13 +122,13 @@ Vue.component('quote-block', {
     },
     computed: {
         displayQuote: function () {
-            fetch("https://quotes.rest/qod?language=en").then(function (response) {
-                    return response.json();
-                }).then(function (data) {
-                    console.log(data.contents.quotes[0].quote);
+            // fetch("https://quotes.rest/qod?language=en").then(function (response) {
+            //         return response.json();
+            //     }).then(function (data) {
+            //         console.log(data.contents.quotes[0].quote);
 
-                    document.getElementById("quoteText").innerHTML = data.contents.quotes[0].quote;
-                });
+            //         document.getElementById("quoteText").innerHTML = data.contents.quotes[0].quote;
+            //     });
         },
     },
     methods: {
@@ -139,17 +139,7 @@ Vue.component('quote-block', {
 })
 
 
-Vue.component('previous-entries-block', {
-    template: '',
-    data: function () {
-        return {name: 'yoshi'}
-    },
-    methods: {
-        changeName: function () {
-            this.name = 'mario'
-        }
-    }
-})
+
 
 
 Vue.component('greeting2', {
@@ -164,6 +154,19 @@ Vue.component('greeting2', {
     }
 })
 
+Vue.component('previous-entries-block', {
+    template: `
+    <div class="previous block">
+    <h3>Previous Entries</h3>
+    <div class="previousEntriesContainer">
+        <!-- will iterate through all entries in diary and render them -->
+        <div v-for="entry in entries">
+            <p class="previousEntry">{{ entry.text | capitalize }} <br> emotional score = {{entry.slider}}</p>
+        </div>
+    </div>
+</div>
+    `,
+})
 
 var app = new Vue({
     el: "#app",
@@ -245,7 +248,7 @@ var app = new Vue({
                 var newEntry = {
                     text: app.message,
                     slider: app.slider,
-                    date: this.displayDate(),
+                   
                     // todo imoplement saving time
                 };
                 app.entries.unshift(newEntry);
@@ -317,6 +320,8 @@ var app = new Vue({
         }
     }
 });
+
+
 
 
 var myEmotionalData = [];
